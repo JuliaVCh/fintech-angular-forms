@@ -32,7 +32,7 @@ export class ApiService {
   getMessageList() {
     return this.afs.collection<IMessages>('messages')
       .valueChanges()
-      .map(list => list.sort((a, b) => a.timesend - b.timesend);
+      .map(list => list.sort((a, b) => a.timesend - b.timesend));
   }
 
   sendMessage(data: IMessages) {

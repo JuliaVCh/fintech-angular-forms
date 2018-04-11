@@ -1,1 +1,42 @@
-Привет. Я форма регистрации!
+<div *ngIf="isAdded"
+     class="alert alert-success">
+  Пользователь успешно добавлен
+</div>
+
+<form class="form-signin" [formGroup]="form" (submit)="onSubmit()" >
+  <h1 class="h3 mb-3 font-weight-normal">Регистрация в чатике</h1>
+
+  <label for="name" class="sr-only">Пользотель</label>
+  <input type="text"
+         id="name"
+         class="form-control"
+         placeholder="Пользотель"
+         autofocus
+         formControlName="name">
+
+  <app-input-errors [field]="form.get('name')"></app-input-errors>
+
+  <label for="password" class="sr-only">Пароль</label>
+  <input type="password"
+         id="password"
+         class="form-control"
+         placeholder="Пароль"
+         autocomplete="off"
+         formControlName="password">
+
+  <app-input-errors [field]="form.get('password')"></app-input-errors>
+
+  <label for="life" class="sr-only">Жизненное кредо</label>
+  <input type="text"
+         id="life"
+         class="form-control"
+         placeholder="Кредо по жизни"
+         formControlName="life">
+
+  <button class="btn btn-lg btn-primary btn-block"
+          [class.btn-danger]="form.invalid"
+          type="submit"
+          [disabled]="form.invalid">Регистрация</button>
+
+  <a [routerLink]="'/'">Назад</a>
+</form>

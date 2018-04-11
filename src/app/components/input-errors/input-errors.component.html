@@ -1,0 +1,13 @@
+<div *ngIf="field.invalid && (field.dirty || field.touched)"
+     class="alert alert-danger">
+
+  <div *ngIf="field.errors.required">
+    Поле обязательное
+  </div>
+  <div *ngIf="field.errors.minlength">
+    Минимальная длина 4 символа
+  </div>
+  <div *ngIf="field.errors.password">
+    Пароль не может начинаться с буквы Z
+  </div>
+</div>

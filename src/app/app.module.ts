@@ -10,6 +10,7 @@ import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { InputErrorsComponent } from './components/input-errors/input-errors.component';
 import { ApiService } from './services/http';
 import { ChatComponent } from './chat/chat.component';
 
@@ -20,6 +21,7 @@ import { ChatComponent } from './chat/chat.component';
     MainComponent,
     LoginComponent,
     RegistrationComponent,
+    InputErrorsComponent,
     ChatComponent
   ],
   imports: [

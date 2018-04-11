@@ -1,1 +1,26 @@
-Привет. Я форма логина!
+<form class="form-signin" [formGroup]="form" (submit)="onSubmit()">
+  <h1 class="h3 mb-3 font-weight-normal">Вход в чатик</h1>
+
+  <label for="name" class="sr-only">Пользотель</label>
+  <input type="text"
+         id="name"
+         class="form-control"
+         placeholder="Пользотель" autofocus
+         formControlName="name">
+
+  <label for="some-password" class="sr-only">Пароль</label>
+  <input type="password"
+         id="some-password"
+         class="form-control"
+         placeholder="Пароль"
+         autocomplete="off"
+         formControlName="password">
+
+  <button class="btn btn-lg btn-primary btn-block"
+          type="submit"
+          [disabled]="form.invalid || inProcess" >
+    {{inProcess ? 'Авторизируем' : 'Войти'}}
+  </button>
+
+  <a [routerLink]="'/auth/singIn'">Регистрация</a>
+</form>

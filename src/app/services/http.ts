@@ -10,6 +10,7 @@ export interface IUser {
 export interface IMessages {
   user: string;
   message: string;
+  timesend: number
 }
 
 @Injectable()
@@ -29,7 +30,9 @@ export class ApiService {
   }
 
   getMessageList() {
-    return this.afs.collection<IMessages>('messages').valueChanges();
+    return this.afs.collection<IMessages>('messages')
+      .valueChanges()
+      .map(list => list.sort((a, b) => a.timesend - b.timesend);
   }
 
   sendMessage(data: IMessages) {

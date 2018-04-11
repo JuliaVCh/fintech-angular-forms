@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomValidators } from '../services/validators';
 import { ApiService, IUser } from '../services/http';
 import { Router } from '@angular/router';
+import {StorageService} from '../services/storage';
 
 @Component({
   selector: 'app-login',
@@ -31,8 +32,7 @@ export class LoginComponent implements OnInit {
 
         if (value.length) {
           this.router.navigate(['chat']);
-
-          localStorage.setItem('user', JSON.stringify(value[0]));
+          StorageService.setItem('user', value[0]);
         }
       });
   }

@@ -1,1 +1,34 @@
-Привет. Я чатик!
+<div class="container full-height">
+  <div class="row full-height">
+    <div class="col-9">
+
+        <div *ngFor="let item of messages | async"
+            [class.text-right]="item.user === user.name"
+            class="messages-wrapper">
+          <span class="message"><b>{{ item.user }} :</b> {{ item.message }}</span>
+        </div>
+
+    </div>
+
+    <div class="col-3 form-wrapper">
+      <form #messageForm="ngForm" (keyup.enter)="onSubmit()" >
+        <div class="form-group">
+          <label for="message">Написать сообщение</label>
+          <input class="form-control"
+                 id="message"
+                 name="message"
+                 required
+                 [(ngModel)]="message"
+                 #name="ngModel">
+
+          <app-input-errors [field]="name" class="error"></app-input-errors>
+
+          <button type="button"
+                  class="btn btn-primary submit"
+                  [disabled]="!messageForm.form.valid || isProcess"
+                  (click)="onSubmit()">Отправить сообщение</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

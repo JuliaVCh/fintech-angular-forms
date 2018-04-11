@@ -1,0 +1,94 @@
+<form class="form-signin" >
+  <h1 class="h3 mb-3 font-weight-normal">Регистрация в чатике</h1>
+
+  <label for="name" class="sr-only">Пользотель</label>
+  <input type="text"
+         id="name"
+         class="form-control"
+         placeholder="Пользотель"
+         autofocus>
+
+  <label for="password" class="sr-only">Пароль</label>
+  <input type="password"
+         id="password"
+         class="form-control"
+         placeholder="Пароль"
+         autocomplete="off">
+
+  <label for="life" class="sr-only">Жизненное кредо</label>
+  <input type="text"
+         id="life"
+         class="form-control"
+         placeholder="Кредо по жизни">
+
+  <button class="btn btn-lg btn-primary btn-block"
+          type="submit">Регистрация</button>
+
+  <a [routerLink]="'/'">Назад</a>
+</form>
+
+<div *ngIf="password.invalid && (password.dirty || password.touched)"
+     class="alert alert-danger">
+
+  <div *ngIf="password.errors.required">
+    Поле обязательное
+  </div>
+  <div *ngIf="password.errors.minlength">
+    Минимальная длина 4 символа
+  </div>
+  <div *ngIf="password.errors.password">
+    Пароль не может начинаться с буквы Z
+  </div>
+</div>
+
+
+<div *ngIf="isAdded"
+     class="alert alert-success">
+  Пользователь успешно добавлен
+</div>
+
+
+<!--=====================================================-->
+
+<div *ngIf="isAdded"
+     class="alert alert-success">
+  Пользователь успешно добавлен
+</div>
+
+<form class="form-signin" [formGroup]="form" (submit)="onSubmit()" >
+  <h1 class="h3 mb-3 font-weight-normal">Регистрация в чатике</h1>
+
+  <label for="name" class="sr-only">Пользотель</label>
+  <input type="text"
+         id="name"
+         class="form-control"
+         placeholder="Пользотель"
+         autofocus
+         formControlName="name">
+
+  <app-input-errors [field]="form.get('name')"></app-input-errors>
+
+  <label for="password" class="sr-only">Пароль</label>
+  <input type="password"
+         id="password"
+         class="form-control"
+         placeholder="Пароль"
+         autocomplete="off"
+         formControlName="password">
+
+  <app-input-errors [field]="form.get('password')"></app-input-errors>
+
+  <label for="life" class="sr-only">Жизненное кредо</label>
+  <input type="text"
+         id="life"
+         class="form-control"
+         placeholder="Кредо по жизни"
+         formControlName="life">
+
+  <button class="btn btn-lg btn-primary btn-block"
+          [class.btn-danger]="form.invalid"
+          type="submit"
+          [disabled]="form.invalid">Регистрация</button>
+
+  <a [routerLink]="'/'">Назад</a>
+</form>

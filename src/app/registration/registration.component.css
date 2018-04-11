@@ -1,0 +1,9 @@
+:host {
+  width: 300px;
+  display: block;
+  margin: 0 auto;
+}
+
+input {
+  margin-bottom: 10px;
+}
